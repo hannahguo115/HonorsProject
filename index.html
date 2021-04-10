@@ -37,6 +37,16 @@
         dfE <- numParticipants - numCondition
         return(dfE)
       }
+        
+      Fformula <- function(SS_Model,SS_Error,df_Model,df_Error){
+        F <- (SS_Model/df_Model)/(SS_Error/df_Error)
+        return(F)
+      }
+
+      SS_Total <- function(SS_Model,SS_Error){
+        F <- SS_Model + SS_Error
+        return(F)
+      }
 
     </code>
       
