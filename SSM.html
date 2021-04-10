@@ -55,7 +55,7 @@
         
     <!--Submission correctness tests and feedback-->
     <code data-type="sct">
-      ex() %>% check_object(SS_Model(group1mean = 63, group2mean = 51, GrandMean = 58.2, num1 = 3, num2 = 2, data = BelievedAgreement)) %>% check_equal()
+      ex() %>% check_object(num1 == 3, num2 == 2) %>% check_equal()
       success_msg("Well done!")
 
     </code>
