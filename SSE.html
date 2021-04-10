@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset="UTF-8">
+    <title>Operators 1</title>
+    <!--DataCamp Light script-->
+    <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</head>
+<body>
+  <!--DataCamp window-->
+  <div data-datacamp-exercise data-lang="r" data-show-run-button=false data-show-solution-before=false data-no-lazy-load=true>
+    <!--Prerun R environment-->
+    <code data-type="pre-exercise-code">
+      packages <- c("mosaic", "supernova","testwhat")
+      lapply(packages, library, character.only = T)
+      
+      Condition <- c('agree','agree','agree','disagree','disagree')
+      PercentageConsent <- c(65,61,63,50,52)
+      BelievedAgreement <- data.frame(Condition, PercentageConsent)
+        
+      SS_Model <- function(group1mean,group2mean,GrandMean,num1,num2,data){
+        SSM <- num1*(group1mean-GrandMean)^2 + num2*(group2mean-GrandMean)^2
+        return(SSM)
+      }
+
+      SS_Error <- function(group1mean,group2mean,data){
+        SSE <- (65-group1mean)^2 + (61-group1mean)^2 + (63-group1mean)^2 + (50-group2mean)^2 + (52-group2mean)^2
+        return(SSE)
+      }
+
+      df_Model <- function(numCondition,data){
+        dfM <- numCondition - 1
+        return(dfM)
+      }
+
+      df_Error <- function(numCondition,numParticipants,data){
+        dfE <- numParticipants - numCondition
+        return(dfE)
+      }
+
+    </code>
+      
+    <!--Student view-->
+    <code data-type="sample-code">
+      # please type and run the line of code to get SS_Error
+      
+    </code> 
+        
+    <!--Solution environment-->
+    <code data-type="solution">
+      # please fill in num1 and num2 and run the code to get SS_Model
+      SS_Error(group1mean = 63, group2mean = 51, data = BelievedAgreement)
+
+    </code> 
+        
+    <!--Submission correctness tests and feedback-->
+    <code data-type="sct">
+      ex() 
+      success_msg("Well done!")
+
+    </code>
+
+  </div>
+</body>
+</html>
