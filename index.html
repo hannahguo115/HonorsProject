@@ -18,51 +18,28 @@
       PercentageConsent <- c(65,61,63,50,52)
       BelievedAgreement <- data.frame(Condition, PercentageConsent)
         
-      SS_Model <- function(group1mean,group2mean,GrandMean,num1,num2,data){
-        SSM <- num1*(group1mean-GrandMean)^2 + num2*(group2mean-GrandMean)^2
-        return(SSM)
-      }
-
-      SS_Error <- function(group1mean,group2mean,data){
-        SSE <- (65-group1mean)^2 + (61-group1mean)^2 + (63-group1mean)^2 + (50-group2mean)^2 + (52-group2mean)^2
-        return(SSE)
-      }
-
-      df_Model <- function(numCondition,data){
-        dfM <- numCondition - 1
-        return(dfM)
-      }
-
-      df_Error <- function(numCondition,numParticipants,data){
-        dfE <- numParticipants - numCondition
-        return(dfE)
-      }
-        
-      Fformula <- function(SS_Model,SS_Error,df_Model,df_Error){
-        F <- (SS_Model/df_Model)/(SS_Error/df_Error)
-        return(F)
-      }
-
-      SS_Total <- function(SS_Model,SS_Error){
-        F <- SS_Model + SS_Error
-        return(F)
-      }
+      
 
     </code>
       
     <!--Student view-->
     <code data-type="sample-code">
-      # remember we need to first fit the two-group model using this command
+      # remember we need to first fit and store the models
+      Empty.model <- lm(formula = PercentageConsent ~ NULL, data = BelievedAgreement)
       Twogroup.model <- lm(formula = PercentageConsent ~ Condition, data = BelievedAgreement)
-      # write and run the code to output the F statistics
+      
+      # getting the ANOVA table for the empty model
+      supernova(Empty.model)
     </code> 
         
     <!--Solution environment-->
     <code data-type="solution">
-      # remember we need to first fit the two-group model using this command
+      # remember we need to first fit and store the models
+      Empty.model <- lm(formula = PercentageConsent ~ NULL, data = BelievedAgreement)
       Twogroup.model <- lm(formula = PercentageConsent ~ Condition, data = BelievedAgreement)
-      # write and run the code to output the F statistics
-      supernova(Twogroup.model)
+      
+      # getting the ANOVA table for the empty model
+      supernova(Empty.model)
 
     </code> 
         
